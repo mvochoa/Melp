@@ -1,0 +1,20 @@
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-alpine3.10
+ARG DATABASE_URL
+ARG VERSION
+ARG PORT 80
+
+ENV PYTHONPATH=/var/app
+ENV PYTHON_ENV=production
+ENV DATABASE_URL=$DATABASE_URL
+ENV VERSION=$VERSION
+ENV PORT=$PORT
+
+WORKDIR /var/app
+RUN apk add --no-cache build-base postgresql-dev
+
+COPY ./src /var/app
+RUN pip install -r requirements.txt \
+    && pip uninstall -y pytest Faker requests \
+    && rm -Rf tests/
+
+CMD sh -c 'alembic upgrade head && python main.py'
