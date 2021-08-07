@@ -25,5 +25,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: heroku container:login
-      - run: heroku container:push --arg=VERSION=${GITHUB_SHA::8} -a fastapi-mario --recursive web
-      - run: heroku container:release -a fastapi-mario web
+      - run: heroku container:push --arg=VERSION=${GITHUB_SHA::8} -a melp-mario --recursive web
+      - run: heroku container:release -a melp-mario web
