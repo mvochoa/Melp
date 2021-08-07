@@ -26,3 +26,11 @@ def create(new_data={}):
     db.refresh(restaurant)
     db.close()
     return restaurant.dict()
+
+
+def destroy(id):
+    db = SessionLocal()
+    restaurant = RestaurantModel.find(id, db)
+    restaurant.delete()
+    db.commit()
+    db.close()

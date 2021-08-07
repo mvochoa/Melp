@@ -24,3 +24,12 @@ $ docker-compose exec app sh
 /var/app $ alembic revision -m "create account table"
 /var/app $ alembic upgrade head
 ```
+
+### Pruebas
+
+Los archivos de las pruebas se encuentran en la carpeta `src/tests`. Para ejecutar las prebas es necesario correr los comandos:
+
+```sh
+$ docker-compose exec app sh
+/var/app $ pytest -vv -x
+```
