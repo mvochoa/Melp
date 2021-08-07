@@ -16,7 +16,7 @@ responses_openapi = {404: {"model": Detail}}
 
 
 @router.get("/statistics", response_model=ResponseStatistics, description="Muestra estadisiticas de restaurantes dentro de un circulo de cierto radio (metros) con el centro en una latitud y longitud especifica")
-def list(latitude: float, longitude: float, radius: float, db: Session = Depends(get_db)):
+def statistics(latitude: float, longitude: float, radius: float, db: Session = Depends(get_db)):
     return db.query(func.count(RestaurantModel.id).label('count'), func.avg(RestaurantModel.rating).label('avg'), func.stddev(RestaurantModel.rating).label('std'),).filter(func.ST_DistanceSphere(func.ST_MakePoint(
         RestaurantModel.lng, RestaurantModel.lat), func.ST_MakePoint(longitude, latitude)) <= radius).first()
 

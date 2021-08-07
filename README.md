@@ -1,6 +1,12 @@
 # Melp
 
-Prueba Back-end Developer Intelimétrica
+Prueba Back-end Developer Intelimétrica [Demo](https://melp-mario.herokuapp.com/)
+
+Enlaces de la documentación de la API Rest:
+
+- Postman: [https://www.postman.com/mvochoaa/workspace/melp-intelimtrica/overview](https://www.postman.com/mvochoaa/workspace/melp-intelimtrica/overview)
+- Swagger UI: [https://melp-mario.herokuapp.com/docs](https://melp-mario.herokuapp.com/docs)
+- ReDoc: [https://melp-mario.herokuapp.com/redoc](https://melp-mario.herokuapp.com/redoc)
 
 ## Desarrollo
 
@@ -12,7 +18,7 @@ $ docker-compose up -d
 
 Esto va a levantar la api en [http://localhost:8000/](http://localhost:8000/). Si se quiere probar la api y ver las documentación se puede ver en las rutas:
 
-- Swagger UI [http://localhost:8000/docs](http://localhost:8000/docs): Esta ruta permite probar las diferentes rutas de la misma api directamente en el navegador
+- Swagger UI [http://localhost:8000/docs](http://localhost:8000/docs): Esta ruta permite probar las diferentes rutas de la api, directamente en el navegador.
 - ReDoc [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
 ### Migraciones
