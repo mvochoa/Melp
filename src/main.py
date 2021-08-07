@@ -3,7 +3,10 @@ import os
 
 from fastapi import FastAPI
 
+from controllers import restaurant_controller
+
 app = FastAPI(title="Melp", version=os.environ.get("VERSION", "local"))
+app.include_router(restaurant_controller.router)
 
 
 @app.get("/")

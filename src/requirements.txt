@@ -3,6 +3,7 @@ uvicorn
 sqlalchemy
 psycopg2
 alembic
+pydantic[email]
 pytest
 Faker
 requests
