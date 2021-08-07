@@ -14,3 +14,13 @@ Esto va a levantar la api en [http://localhost:8000/](http://localhost:8000/). S
 
 - Swagger UI [http://localhost:8000/docs](http://localhost:8000/docs): Esta ruta permite probar las diferentes rutas de la misma api directamente en el navegador
 - ReDoc [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+### Migraciones
+
+Los archivos de las migraciones se encuentran en la carpeta `src/alembic/versions`. Para crear nuevos archivos de migraciones y ejecutarlos se necesitan los ejecutar los comandos:
+
+```sh
+$ docker-compose exec app sh
+  $ alembic revision -m "create account table"
+  $ alembic upgrade head
+```
