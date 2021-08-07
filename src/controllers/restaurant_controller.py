@@ -40,4 +40,12 @@ def update(request: RequestRestaurant, id: str, db: Session = Depends(get_db)):
     values = request.dict()
     values['site'] = str(values['site'])
     restaurant.update(values)
+    db.commit()
     return RestaurantModel.find(id, db).first()
+
+
+@router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT, responses=responses_openapi, description="Elimina un restaurante en especifico")
+def destroy(id: str, db: Session = Depends(get_db)):
+    restaurant = RestaurantModel.find(id, db)
+    restaurant.delete()
+    db.commit()
