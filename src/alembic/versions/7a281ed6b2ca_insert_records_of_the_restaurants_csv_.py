@@ -31,7 +31,9 @@ def read_file():
                    'phone', 'street', 'city', 'state', 'lat', 'lng']
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
-            rows.append(dict(zip(headers, row)))
+            new_row = dict(zip(headers, row))
+            new_row['site'] = new_row['site'].replace(" ", "_")
+            rows.append(new_row)
     return rows
 
 

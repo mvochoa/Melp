@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, status
 from fastapi.param_functions import Depends
 from sqlalchemy.orm.session import Session
@@ -17,3 +18,8 @@ def create(request: RequestRestaurant, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(restaurant)
     return restaurant
+
+
+@router.get("", response_model=List[ResponseRestaurant], description="Registra nuevos restaurantes")
+def list(db: Session = Depends(get_db)):
+    return db.query(RestaurantModel).all()
