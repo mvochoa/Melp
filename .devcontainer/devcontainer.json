@@ -17,5 +17,5 @@
 	"extensions": [
 		"ms-python.python"
 	],
-	"postStartCommand": "apk add --update git && pip install autopep8"
+	"postStartCommand": "apk add --update git build-base postgresql-dev && pip install autopep8"
 }
