@@ -35,6 +35,12 @@ class ResponseRestaurant(ResponseModel, RequestRestaurant):
     id: UUID
 
 
+class ResponseStatistics(ResponseModel):
+    count: int
+    avg: Optional[float]
+    std: Optional[float]
+
+
 class NotFoundRestaurantException(HTTPException):
     def __init__(self, id: str, headers: Optional[Dict[str, Any]] = {}) -> None:
         status_code = status.HTTP_404_NOT_FOUND
