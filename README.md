@@ -17,10 +17,10 @@ Esto va a levantar la api en [http://localhost:8000/](http://localhost:8000/). S
 
 ### Migraciones
 
-Los archivos de las migraciones se encuentran en la carpeta `src/alembic/versions`. Para crear nuevos archivos de migraciones y ejecutarlos se necesitan los ejecutar los comandos:
+Los archivos de las migraciones se encuentran en la carpeta `src/alembic/versions`. Para crear nuevos archivos de migraciones y ejecutarlos se necesita correr los comandos:
 
 ```sh
 $ docker-compose exec app sh
-  $ alembic revision -m "create account table"
-  $ alembic upgrade head
+/var/app $ alembic revision -m "create account table"
+/var/app $ alembic upgrade head
 ```
