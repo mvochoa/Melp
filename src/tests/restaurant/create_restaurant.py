@@ -1,18 +1,6 @@
-from tests.base import client, fake
+from tests.base import client
 
-url = "/restaurants"
-data = {
-    'rating': fake.pyint(min_value=0, max_value=4),
-    'name': fake.company(),
-    'site': fake.url(),
-    'email': fake.safe_email(),
-    'phone': fake.msisdn(),
-    'street': fake.street_address(),
-    'city': fake.city(),
-    'state': fake.country(),
-    'lat': fake.pyfloat(min_value=-90, max_value=90),
-    'lng': fake.pyfloat(min_value=-90, max_value=90),
-}
+from .base import url, data
 
 
 def test_create():

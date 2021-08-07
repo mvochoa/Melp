@@ -1,6 +1,6 @@
 from tests.base import client
 
-url = "/restaurants"
+from .base import url
 
 
 def test_list():

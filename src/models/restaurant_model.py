@@ -4,6 +4,8 @@ from database.connection import Base
 from sqlalchemy.dialects.postgresql import UUID
 from uuid import uuid4
 
+from schemas.restaurant_schema import NotFoundRestaurantException
+
 
 class RestaurantModel(Base):
     __tablename__ = 'restaurants'
@@ -19,3 +21,21 @@ class RestaurantModel(Base):
     state = Column(Text)
     lat = Column(Float)
     lng = Column(Float)
+
+    @classmethod
+    def find(cls, id, db):
+        try:
+            row = db.query(cls).filter(cls.id == id)
+            if not row.first():
+                raise NotFoundRestaurantException(id)
+
+            return row
+        except:
+            raise NotFoundRestaurantException(id)
+
+    def dict(self):
+        dic = self.__dict__
+        dic['id'] = str(self.id)
+        del dic['_sa_instance_state']
+
+        return dic

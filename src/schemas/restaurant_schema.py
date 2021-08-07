@@ -1,7 +1,8 @@
 import re
-from typing import Optional
+from typing import Optional, Dict, Any
+from fastapi import HTTPException, status
 from fastapi.param_functions import Path
-from pydantic import BaseModel,  Field, validator
+from pydantic import BaseModel, Field, validator
 from pydantic.networks import AnyHttpUrl, EmailStr
 from uuid import UUID
 
@@ -32,3 +33,10 @@ class RequestRestaurant(BaseModel):
 
 class ResponseRestaurant(ResponseModel, RequestRestaurant):
     id: UUID
+
+
+class NotFoundRestaurantException(HTTPException):
+    def __init__(self, id: str, headers: Optional[Dict[str, Any]] = {}) -> None:
+        status_code = status.HTTP_404_NOT_FOUND
+        detail = f"El restaurante con el ID '{id}' no se encontro"
+        super().__init__(status_code, detail, headers)

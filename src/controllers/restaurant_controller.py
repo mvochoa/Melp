@@ -20,6 +20,12 @@ def create(request: RequestRestaurant, db: Session = Depends(get_db)):
     return restaurant
 
 
-@router.get("", response_model=List[ResponseRestaurant], description="Registra nuevos restaurantes")
+@router.get("", response_model=List[ResponseRestaurant], description="Lista los restaurantes registrados")
 def list(db: Session = Depends(get_db)):
     return db.query(RestaurantModel).all()
+
+
+@router.get("/{id}", response_model=ResponseRestaurant, description="Muestra los datos de un restaurante en especifico")
+def show(id: str, db: Session = Depends(get_db)):
+    restaurant = RestaurantModel.find(id, db)
+    return restaurant.first()
