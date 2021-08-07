@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  vscode:
+    image: python:3.8-alpine
+    working_dir: /workspace/src
+    volumes:
+      - .:/workspace:cached
+      - packages:/usr/local/lib/python3.8/site-packages/
+    command: sh -c 'tail -f /dev/null'
