@@ -3,3 +3,6 @@ uvicorn
 sqlalchemy
 psycopg2
 alembic
+pytest
+Faker
+requests
